@@ -1,0 +1,37 @@
+
+- robot:
+    #Choose robot (Kuka, ur10, Yumi )
+    arm: Kuka
+    #Choose gripper (threeFingers, RG6, yumi, shadowHand,PR2)
+    gripper: PR2
+    robot_start_pos: [0, 0, 0]
+    robot_start_orientation_euler: [0, 0, 0]
+    K: 0.5
+    camera: True
+    camera_pos : [1, 1, 1]   #add camera
+    
+- simulation:
+    #Choose object (Bottle, cube_small.urdf, cube_no_rotation.urdf, r2d2.urdf, sphere2.urdf,teddy_vhacd.urdf,teddy_vhacd.urdf) or other standard objects from pybullet
+    timestep: 0.01
+    table: False
+    object_name: Bottle
+    object_mass: 0.1
+    object_inertial_frame_position:
+    object_position: [1, 0, 1]
+    object_orientation:
+    camera_pos : [1, 2, 0.5]
+    pitch : -20.0
+    yaw : 0
+    roll : 0
+    fov : 70 #default:30
+
+- motion:  
+    #Pose_target  = [r, ri, rj, rk, p, pi, pj ,pk]  where r stands for rotation and p for translation  (Dual quaternion)
+    pose_target: [0.0,-0.179477,0.063609,0.229520,-0.680244,0.357530,0.405682,0.494835]
+    #Set path to grip data (one datapoint for each joint in gripper,  threefingers = 10 joints, SH = 30)
+    grip_path: ./data/grip/threeFingers.dat 
+
+- graphics:
+    visuals: True
+    quality: high 
+    GUI: True
